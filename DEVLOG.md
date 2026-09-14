@@ -90,3 +90,15 @@ All significant architectural steps, subtasks, decisions, and updates are tracke
   - `agent`: Full LangChain classify → ChromaDB RAG → Gemini reply → escalation pipeline.
 - Outputs timestamped JSON to `eval/results/`.
 - Supports `--system`, `--limit` (smoke test), and `--skip-judge` flags.
+
+### 23:45 — Containerisation (Phase 5, Subtask 9)
+- **Switched from PostgreSQL → SQLite**: eliminated Postgres service, asyncpg, and Alembic entirely. Tables created automatically by `Base.metadata.create_all` via `init_db()` at server startup.
+- Removed `alembic/` directory and `alembic.ini` from project.
+- Updated `app/database.py` to use `aiosqlite` with SQLite file at `./data/support_agent.db`.
+- Updated `app/config.py`: `SQLITE_DB_PATH` replaces all `POSTGRES_*` settings.
+- Authored multi-stage `Dockerfile` (python:3.11-slim builder + slim runtime): no libpq, no Alembic, minimal image.
+- Authored `docker-compose.yml` with a **single `api` service** mounting `./data:/app/data` for ChromaDB and SQLite persistence. All config from `.env`.
+- Authored `docker-entrypoint.sh`: starts uvicorn; normalises `LOG_LEVEL` to lowercase via `tr` before passing to uvicorn CLI.
+- Updated `requirements.txt`: added `aiosqlite`, removed `asyncpg` and `alembic`.
+- Updated `.env` and `.env.example`: removed Postgres vars, added `SQLITE_DB_PATH`, changed `LOG_LEVEL` to lowercase.
+- Verified: `docker compose up --build` starts cleanly, `/health` returns 200, `/docs` UI accessible.
