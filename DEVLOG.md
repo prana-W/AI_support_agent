@@ -47,3 +47,10 @@ All significant architectural steps, subtasks, decisions, and updates are tracke
 ### 23:07 — Data Models & Retrieval Engine (Subtask 4)
 - Implemented `app/models.py` with Pydantic request/response schemas for `/agent`, `/classify`, and `/reply`.
 - Implemented `app/retrieval.py` providing `SupportRetriever` wrapper for semantic similarity search over historical Amazon support resolutions.
+
+### 23:10 — Core LangChain Support Agent (Subtask 5)
+- Implemented `app/agent.py` containing three LangChain LCEL chains:
+  1. `classify_chain`: Intent classification with structured JSON output and confidence score across 8 standard intents.
+  2. `reply_chain`: Historical Twitter RAG context injection for empathy, policy compliance, and length restraint (full draft + <=280 character Twitter reply).
+  3. `escalation_decider`: Comprehensive escalation heuristic evaluating confidence score (<0.6), high-risk intents (`refund_return`, `billing_payment`, `account_access`), and urgency/legal indicators.
+- Verified end-to-end execution on live test cases (`order_tracking` auto-handled vs. `billing_payment` escalated).
