@@ -54,3 +54,13 @@ All significant architectural steps, subtasks, decisions, and updates are tracke
   2. `reply_chain`: Historical Twitter RAG context injection for empathy, policy compliance, and length restraint (full draft + <=280 character Twitter reply).
   3. `escalation_decider`: Comprehensive escalation heuristic evaluating confidence score (<0.6), high-risk intents (`refund_return`, `billing_payment`, `account_access`), and urgency/legal indicators.
 - Verified end-to-end execution on live test cases (`order_tracking` auto-handled vs. `billing_payment` escalated).
+
+### 23:14 — PostgreSQL Database & FastAPI Endpoints (Subtask 6)
+- Implemented `app/database.py` with SQLAlchemy 2.0 async engine and ORM tables (`conversation_logs`, `golden_set`, `eval_runs`).
+- Implemented `app/main.py` configuring FastAPI server on port 8088 with endpoints:
+  - `GET /health` (system and model status)
+  - `POST /agent` (full pipeline with asynchronous DB audit logging)
+  - `POST /classify` (sub-endpoint for intent classification)
+  - `POST /reply` (sub-endpoint for RAG reply generation)
+  - `GET /logs` (audit trail retrieval)
+- Validated with FastAPI TestClient: health check (200 OK) and full pipeline execution (200 OK) with live ChromaDB retrieval.
