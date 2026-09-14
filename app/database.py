@@ -1,17 +1,22 @@
 """
-app/database.py — PostgreSQL connection, SQLAlchemy 2.0 ORM models, and logging helpers.
+app/database.py — SQLite database connection, ORM models, and logging helpers.
+
+Uses aiosqlite (async SQLite) — zero infrastructure needed.
+The DB file lives at data/support_agent.db inside the container/project.
 
 Stores:
 1. conversation_logs: Full audit trail of every agent request and response.
-2. golden_set: Ground-truth evaluation dataset.
-3. eval_runs: Metrics and results for each evaluation run.
+2. golden_set:        Ground-truth evaluation dataset.
+3. eval_runs:         Metrics from each evaluation harness run.
 """
 
 import logging
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import AsyncGenerator
-from sqlalchemy import Column, Integer, String, Float, Boolean, Text, DateTime, JSON
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+
+from sqlalchemy import Boolean, Column, DateTime, Float, Integer, JSON, String, Text
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import declarative_base
 
 from app.config import settings
@@ -21,11 +26,11 @@ log = logging.getLogger(__name__)
 Base = declarative_base()
 
 
-# ── ORM Table Models ─────────────────────────────────────────────────────────
+# ── ORM Table Models ──────────────────────────────────────────────────────────
 
 
 class ConversationLog(Base):
-    """Stores every incoming user message and agent decision for audit and analysis."""
+    """Stores every incoming user message and agent decision for audit."""
     __tablename__ = "conversation_logs"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -55,7 +60,7 @@ class GoldenSetItem(Base):
 
 
 class EvalRun(Base):
-    """Stores summary scores and metrics from evaluation harness executions."""
+    """Stores summary metrics from evaluation harness executions."""
     __tablename__ = "eval_runs"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -65,13 +70,16 @@ class EvalRun(Base):
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 
-# ── Database Engine & Session Factory ────────────────────────────────────────
+# ── SQLite Engine & Session Factory ──────────────────────────────────────────
+
+# Ensure the data/ directory exists before SQLite tries to create the file
+Path(settings.sqlite_db_path).parent.mkdir(parents=True, exist_ok=True)
 
 engine = create_async_engine(
-    settings.postgres_url,
+    f"sqlite+aiosqlite:///{settings.sqlite_db_path}",
     echo=False,
     future=True,
-    pool_pre_ping=True,
+    connect_args={"check_same_thread": False},
 )
 
 AsyncSessionLocal = async_sessionmaker(
@@ -92,14 +100,14 @@ async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
 
 
 async def init_db() -> bool:
-    """Initialize database tables. Returns True if successful, False if DB unavailable."""
+    """Create all tables if they don't exist. Always succeeds with SQLite."""
     try:
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
-        log.info("PostgreSQL database tables initialized successfully.")
+        log.info("SQLite database initialised at %s.", settings.sqlite_db_path)
         return True
     except Exception as e:
-        log.warning("PostgreSQL not reachable (%s). Running with in-memory logging fallback.", e)
+        log.error("Failed to initialise SQLite database: %s", e)
         return False
 
 
@@ -113,7 +121,7 @@ async def log_conversation(
     escalation_reason: str | None,
     conversation_id: str = "",
 ) -> None:
-    """Helper to record a conversation turn in PostgreSQL without raising on connection error."""
+    """Record a conversation turn to SQLite. Silently skips on error."""
     try:
         async with AsyncSessionLocal() as session:
             async with session.begin():
@@ -129,4 +137,4 @@ async def log_conversation(
                 )
                 session.add(entry)
     except Exception as e:
-        log.debug("Skipping conversation logging to DB (offline or unreachable): %s", e)
+        log.debug("Skipping DB logging: %s", e)
