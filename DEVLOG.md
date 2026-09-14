@@ -64,3 +64,29 @@ All significant architectural steps, subtasks, decisions, and updates are tracke
   - `POST /reply` (sub-endpoint for RAG reply generation)
   - `GET /logs` (audit trail retrieval)
 - Validated with FastAPI TestClient: health check (200 OK) and full pipeline execution (200 OK) with live ChromaDB retrieval.
+
+### 23:18 — ChromaDB Vector Index Complete
+- `scripts/build_index.py` completed successfully: **950 documents** indexed in ChromaDB.
+- Rate-limit retries (429) handled transparently with exponential backoff across 20 batches of 50.
+
+---
+
+## 2026-09-15
+
+### 00:21 — Golden Evaluation Set — LLM Pre-labelling (Phase 3, Subtask 7)
+- Implemented `scripts/build_golden_set.py` with two-stage approach:
+  1. **Keyword heuristic bucketing**: instant, zero API cost, categorises all 154k pairs into 8 intent buckets.
+  2. **LLM pre-labelling**: gemini-3.1-flash-lite labels 25 samples per intent (200 total) with `label_intent`, `label_escalate`, `label_reason`, `ideal_reply_summary`.
+- Fixed SDK content-extraction bug (`result.content` returns `list` in newer versions).
+- Output: `data/golden_set/golden_set.jsonl` — each row has `human_verified: false` flag for manual review.
+- **Human review required**: user must open JSONL and correct obvious mislabels before running eval.
+
+### 00:32 — Evaluation Harness (Phase 4, Subtask 8)
+- Implemented `eval/metrics.py`: accuracy, macro-F1, per-class F1, binary precision/recall/F1, Cohen's Kappa, judge score aggregation. Pure Python, no sklearn dependency.
+- Implemented `eval/judge.py`: LangChain + Gemini LLM-as-judge scoring replies 1–5 on relevance, groundedness, tone, and conciseness. Composite score = mean of 4 dimensions.
+- Implemented `eval/evaluate.py`: Three-way evaluation harness:
+  - `trivial`: majority-class intent + hardcoded template reply.
+  - `simple`: TF-IDF + cosine similarity nearest-neighbour intent + reply lookup.
+  - `agent`: Full LangChain classify → ChromaDB RAG → Gemini reply → escalation pipeline.
+- Outputs timestamped JSON to `eval/results/`.
+- Supports `--system`, `--limit` (smoke test), and `--skip-judge` flags.
