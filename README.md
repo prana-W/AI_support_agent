@@ -157,23 +157,26 @@ python scripts/build_golden_set.py
 
 ## Evaluation
 
-After manually reviewing `data/golden_set/golden_set.jsonl` (setting `human_verified: true`):
-
 ```bash
-# Quick sanity check (trivial baseline, no LLM judge)
-python eval/evaluate.py --system trivial --skip-judge
+# Activate the virtual environment first
+source .venv/bin/activate
 
-# TF-IDF baseline
-python eval/evaluate.py --system tfidf --skip-judge
+# 1. Smoke test — 10 examples, no API calls (sanity check)
+python eval/evaluate.py --system trivial --limit 10 --skip-judge
 
-# Full agent evaluation
+# 2. All 3 systems, full golden set, no LLM judge (fast, free)
+python eval/evaluate.py --system all --skip-judge
+
+# 3. Full agent evaluation WITH LLM-as-judge reply scoring
 python eval/evaluate.py --system agent
 
-# Run all 3 systems with a 10-example smoke test
-python eval/evaluate.py --limit 10
+# 4. Run a single specific system
+python eval/evaluate.py --system trivial --skip-judge
+python eval/evaluate.py --system simple --skip-judge
+python eval/evaluate.py --system agent --skip-judge
 ```
 
-Results are saved to `eval/results/<timestamp>.json`.
+Results are saved to `eval/results/<timestamp>_<system>.json`.
 
 ---
 
