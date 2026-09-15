@@ -1,0 +1,584 @@
+{
+  "run_name": "20260915_182248",
+  "system_filter": "all",
+  "n_examples": 20,
+  "skip_judge": false,
+  "results": [
+    {
+      "system": "trivial",
+      "n_examples": 20,
+      "intent": {
+        "accuracy": 0.05,
+        "macro_f1": 0.0119,
+        "per_class_f1": {
+          "order_tracking": 0.0952,
+          "refund_return": 0.0,
+          "account_access": 0.0,
+          "product_issue": 0.0,
+          "delivery_issue": 0.0,
+          "billing_payment": 0.0,
+          "general_inquiry": 0.0,
+          "other": 0.0
+        }
+      },
+      "escalation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "reply_quality": {
+        "tone": 3.65,
+        "composite": 3.95,
+        "conciseness": 5.0,
+        "groundedness": 5.0,
+        "relevance": 3.45
+      },
+      "predictions": [
+        {
+          "message": "Just received the Echo DOT &amp; is not working out of the box! No manual is provided!",
+          "true_intent": "product_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "I reinstalled it &amp; it's working fine. But how did it happen in the first place?",
+          "true_intent": "product_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "UPS. Both. Disappointing.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "It said it was on its way. It was at a ups warehouse 6 days ago 14 miles from my house. They successfully gave it to USPS to deliver to me. Seriously.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "Thanks. So, in summary, your tracking system is not to be relied upon for accuracy?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "hi I ordered something yesterday afternoon using amazon prime two day shipping when will it be here ?",
+          "true_intent": "order_tracking",
+          "pred_intent": "order_tracking",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "What the hell ?! This boxed is beyond damaged. I wanted a new one!",
+          "true_intent": "product_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "#AmazonIndia what would reaching out that to end of day would do..Better try to get this atleast delivered today. That would be more helpful",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "Why does think getting packages delivered through India Post is a good idea?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "Haha! Link requires me to log in to do anything :-P Already sent an email of sorts, but thank you for trying to help. I appreciate it!",
+          "true_intent": "account_access",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "Ordering from - When it works it works great. When there is a problem (\"prime\" delivery not delivered after 6 days) they fall apart.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "Entrega estimada para 1/dez - 7/dez, por\u00e9m at\u00e9 agora n\u00e3o mudou o status. Posso entrar em contato com algum atendente?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "Shared and I got reply too ,but it's like everyday story .me too will not cancel this time .let u People cancel my order",
+          "true_intent": "refund_return",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "plz expedite the delivery of my order placed by mob no- 8010757001. Its urgent, you guyz didnt even give me option to pay 1 day delivery charge as well. Its my first order with u. Dont brk my trust. reaching twitter almost brks it.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "very bad Couriar service. you make fake promise guarantee for delivery. your call centre executive not give right information. your company make fake promise. All are talk rudely. My order No. # 171-0728961-5293153",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "amazonuk took money without any they are not giving it back nor giving clear statement of my refund proces",
+          "true_intent": "billing_payment",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "this is apparently a failed delivery attempt of 3 items, all due last Friday, still waiting despite promises that the items would be delivered Friday evening, Saturday morning, Sunday, Monday, Tuesday, you get the picture !!!!!",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "just had a delivery of a TELESCOPE thrown over our back gate and you register it as \u201chanded to resident\u201d! This is my daughter\u2019s birthday present your driver is being flippant with! If it\u2019s broken you would have ruined her birthday. Hope your happy \ud83d\udc4f\ud83c\udffb\ud83d\ude21",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "this is ridiculous...i specified that this order was a gift too....and a \"replacement\" would cost me more since one of the items was a part of a lightning deal...",
+          "true_intent": "refund_return",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        },
+        {
+          "message": "Make sure it gets delivered today. It has been in my city since yesterday early morning. I\u2019m sure it can be done unless you would rather chose to make a fool out of your customers",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Hi! Thank you for reaching out to Amazon. Please DM us your order details and we'll look into it right away. ^AH"
+        }
+      ]
+    },
+    {
+      "system": "simple",
+      "n_examples": 20,
+      "intent": {
+        "accuracy": 0.6,
+        "macro_f1": 0.4254,
+        "per_class_f1": {
+          "order_tracking": 0.5,
+          "refund_return": 0.5,
+          "account_access": 1.0,
+          "product_issue": 0.6667,
+          "delivery_issue": 0.7368,
+          "billing_payment": 0.0,
+          "general_inquiry": 0.0,
+          "other": 0.0
+        }
+      },
+      "escalation": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1": 0.4
+      },
+      "reply_quality": {
+        "tone": 2.8,
+        "composite": 3.25,
+        "conciseness": 4.5,
+        "groundedness": 4.65,
+        "relevance": 2.5
+      },
+      "predictions": [
+        {
+          "message": "Just received the Echo DOT &amp; is not working out of the box! No manual is provided!",
+          "true_intent": "product_issue",
+          "pred_intent": "product_issue",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "I'm sorry about the inconvenience. Kindly connect with us via we'd like to help you. ^SG"
+        },
+        {
+          "message": "I reinstalled it &amp; it's working fine. But how did it happen in the first place?",
+          "true_intent": "product_issue",
+          "pred_intent": "other",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Due to the internal technical glitches, we may encounter with such errors. But they are rectified soon. I'm glad that the application is working fine for you now. ^HS"
+        },
+        {
+          "message": "UPS. Both. Disappointing.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I totally understand your disappointment. We'd like to take a look at this with you in real time. When you have a moment, please give us a call here: I recommend calling, just in case we need to contact UPS on your behalf. ^BL"
+        },
+        {
+          "message": "It said it was on its way. It was at a ups warehouse 6 days ago 14 miles from my house. They successfully gave it to USPS to deliver to me. Seriously.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm so sorry for the frustrating experience! We want to take a closer look at the situation. Please reach out to us via phone or chat here and we'll dig into this:"
+        },
+        {
+          "message": "Thanks. So, in summary, your tracking system is not to be relied upon for accuracy?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Our tracking system isn't an exact prediction, but a good estimate that regularly provides up to date information on your orders.^PJ"
+        },
+        {
+          "message": "hi I ordered something yesterday afternoon using amazon prime two day shipping when will it be here ?",
+          "true_intent": "order_tracking",
+          "pred_intent": "order_tracking",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Two-Day Shipping refers to transit time, in business days, once shipped. You should be able to see an estimated or guaranteed delivery date in your order details here: ^JR"
+        },
+        {
+          "message": "What the hell ?! This boxed is beyond damaged. I wanted a new one!",
+          "true_intent": "product_issue",
+          "pred_intent": "product_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm sorry! Was it shipped by Amazon or a third-party seller as seen here: ^SE"
+        },
+        {
+          "message": "#AmazonIndia what would reaching out that to end of day would do..Better try to get this atleast delivered today. That would be more helpful",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "email ID. Kindly check it here: 2/2 ^RS"
+        },
+        {
+          "message": "Why does think getting packages delivered through India Post is a good idea?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Couriers are assigned depending on the pin codes of the delivery address. Kindly elaborate if you've any queries. ^AK"
+        },
+        {
+          "message": "Haha! Link requires me to log in to do anything :-P Already sent an email of sorts, but thank you for trying to help. I appreciate it!",
+          "true_intent": "account_access",
+          "pred_intent": "account_access",
+          "true_escalate": true,
+          "pred_escalate": true,
+          "reply": "You can contact via this link if you don't have access: Keep us posted when you hear back to your message. Thank you. ^NV"
+        },
+        {
+          "message": "Ordering from - When it works it works great. When there is a problem (\"prime\" delivery not delivered after 6 days) they fall apart.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm sorry you don't have your order. Did we ask you to wait longer for it? If you need an update, call: ^MG"
+        },
+        {
+          "message": "Entrega estimada para 1/dez - 7/dez, por\u00e9m at\u00e9 agora n\u00e3o mudou o status. Posso entrar em contato com algum atendente?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "other",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Por favor Paulo, entre em contato com o SAC ( eles poder\u00e3o te ajudar ^VL"
+        },
+        {
+          "message": "Shared and I got reply too ,but it's like everyday story .me too will not cancel this time .let u People cancel my order",
+          "true_intent": "refund_return",
+          "pred_intent": "other",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "In case the resolution provided is not up to your expectation, you can choose to write back to our correspondence. We shall review the situation. ^CB"
+        },
+        {
+          "message": "plz expedite the delivery of my order placed by mob no- 8010757001. Its urgent, you guyz didnt even give me option to pay 1 day delivery charge as well. Its my first order with u. Dont brk my trust. reaching twitter almost brks it.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "billing_payment",
+          "true_escalate": true,
+          "pred_escalate": true,
+          "reply": "I get your concern about the order, Talha. We ship &amp; deliver orders as per the estimates shared with you. Please wait till the estimates, I'm positive your order should be delivered soon. Appreciate your understanding. ^KH"
+        },
+        {
+          "message": "very bad Couriar service. you make fake promise guarantee for delivery. your call centre executive not give right information. your company make fake promise. All are talk rudely. My order No. # 171-0728961-5293153",
+          "true_intent": "delivery_issue",
+          "pred_intent": "product_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Also, please don't provide your order details, we consider it to be personal info. Our page is visible to the public. (2/2)^SF"
+        },
+        {
+          "message": "amazonuk took money without any they are not giving it back nor giving clear statement of my refund proces",
+          "true_intent": "billing_payment",
+          "pred_intent": "refund_return",
+          "true_escalate": true,
+          "pred_escalate": true,
+          "reply": "I'm sorry for the frustration! Without giving personal/account details, could you tell us a bit more about what's going on? ^DG"
+        },
+        {
+          "message": "this is apparently a failed delivery attempt of 3 items, all due last Friday, still waiting despite promises that the items would be delivered Friday evening, Saturday morning, Sunday, Monday, Tuesday, you get the picture !!!!!",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm sorry you don't have your parcel! We'd like to help! Please reach out to us via phone/chat here: and we can help fix this. ^TK"
+        },
+        {
+          "message": "just had a delivery of a TELESCOPE thrown over our back gate and you register it as \u201chanded to resident\u201d! This is my daughter\u2019s birthday present your driver is being flippant with! If it\u2019s broken you would have ruined her birthday. Hope your happy \ud83d\udc4f\ud83c\udffb\ud83d\ude21",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "Oh no! Sorry to hear this. This is not the service we expect from our carriers. What carrier delivered the order? Is the item damaged?^ES"
+        },
+        {
+          "message": "this is ridiculous...i specified that this order was a gift too....and a \"replacement\" would cost me more since one of the items was a part of a lightning deal...",
+          "true_intent": "refund_return",
+          "pred_intent": "refund_return",
+          "true_escalate": true,
+          "pred_escalate": true,
+          "reply": "Hi, have you had a chance to request a refund or replacement for your order?^PJ"
+        },
+        {
+          "message": "Make sure it gets delivered today. It has been in my city since yesterday early morning. I\u2019m sure it can be done unless you would rather chose to make a fool out of your customers",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I see that you're concerned about the delivery of your order. As informed earlier, we're working on it and we'll get this issue resolved at the earliest. ^BV"
+        }
+      ]
+    },
+    {
+      "system": "agent",
+      "n_examples": 20,
+      "intent": {
+        "accuracy": 0.8,
+        "macro_f1": 0.597,
+        "per_class_f1": {
+          "order_tracking": 0.4,
+          "refund_return": 0.6667,
+          "account_access": 1.0,
+          "product_issue": 0.8,
+          "delivery_issue": 0.9091,
+          "billing_payment": 1.0,
+          "general_inquiry": 0.0,
+          "other": 0.0
+        }
+      },
+      "escalation": {
+        "precision": 1.0,
+        "recall": 0.1875,
+        "f1": 0.3158
+      },
+      "reply_quality": {
+        "tone": 4.75,
+        "composite": 4.4,
+        "conciseness": 5.0,
+        "groundedness": 5.0,
+        "relevance": 4.15
+      },
+      "predictions": [
+        {
+          "message": "Just received the Echo DOT &amp; is not working out of the box! No manual is provided!",
+          "true_intent": "product_issue",
+          "pred_intent": "product_issue",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Oh no, I'm so sorry to hear your new Echo Dot isn't working! For troubleshooting steps to get your device set up, please check out our Echo Help pages here: [Link]. If you still need help, please send us a DM. ^AM"
+        },
+        {
+          "message": "I reinstalled it &amp; it's working fine. But how did it happen in the first place?",
+          "true_intent": "product_issue",
+          "pred_intent": "other",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "I'm glad to hear that reinstalling the app resolved the issue! Glitches like this can sometimes occur due to a corrupted cache or update. If you'd like us to investigate further, please reach out via DM. Please don't share personal info publicly. ^AM"
+        },
+        {
+          "message": "UPS. Both. Disappointing.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry to hear about the trouble with your UPS deliveries. I understand how disappointing this is and would like to look into this for you. Please reach out to us via our secure link here: [Link]. Please don't share personal details publicly. ^[Agent Initials]"
+        },
+        {
+          "message": "It said it was on its way. It was at a ups warehouse 6 days ago 14 miles from my house. They successfully gave it to USPS to deliver to me. Seriously.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry for the frustration regarding your delivery status. Without sharing personal details publicly, please reach out to us here: https://www.amazon.com/contact-us so we can investigate the tracking and review available options for you. ^AM"
+        },
+        {
+          "message": "Thanks. So, in summary, your tracking system is not to be relied upon for accuracy?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry for the frustration caused by the inaccuracies in our tracking updates. I'd like to look into this further for you. Please reach out to us via DM so we can investigate without sharing any personal information publicly. ^AB"
+        },
+        {
+          "message": "hi I ordered something yesterday afternoon using amazon prime two day shipping when will it be here ?",
+          "true_intent": "order_tracking",
+          "pred_intent": "order_tracking",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Hello! I'm sorry for the confusion. While Prime offers two-day shipping, some items have longer processing times. Please send us a DM so we can look into this for you. Please do not share any personal or order info publicly here. ^AM"
+        },
+        {
+          "message": "What the hell ?! This boxed is beyond damaged. I wanted a new one!",
+          "true_intent": "product_issue",
+          "pred_intent": "product_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry to hear your package arrived damaged. We'd like to review your options, so please reach out to us here: [Link]. Please do not share personal details like order numbers here, as this is a public page. ^AM"
+        },
+        {
+          "message": "#AmazonIndia what would reaching out that to end of day would do..Better try to get this atleast delivered today. That would be more helpful",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I understand your frustration regarding the delivery delay and apologize for the inconvenience. Please send us a DM with your order details (without sharing sensitive info publicly) so I can look into this for you. ^SA"
+        },
+        {
+          "message": "Why does think getting packages delivered through India Post is a good idea?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm sorry to hear about your concerns. Couriers are assigned based on the delivery pin code. We'd like to look into this further for you. Please reach out to our team here: https://www.amazon.in/contactus (Please don't share personal info here). ^AK"
+        },
+        {
+          "message": "Haha! Link requires me to log in to do anything :-P Already sent an email of sorts, but thank you for trying to help. I appreciate it!",
+          "true_intent": "account_access",
+          "pred_intent": "account_access",
+          "true_escalate": true,
+          "pred_escalate": true,
+          "reply": "I'm sorry for the frustration! Since you've already sent an email, could you let us know when you reached out and if you've received a response yet? Please don't share any personal info here, but let us know if you're seeing a specific error message. ^AR"
+        },
+        {
+          "message": "Ordering from - When it works it works great. When there is a problem (\"prime\" delivery not delivered after 6 days) they fall apart.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry for the delay with your Prime delivery. We'd like to look into this for you. Without sharing personal details publicly, please send us a DM with your order information so we can investigate this further. ^AM"
+        },
+        {
+          "message": "Entrega estimada para 1/dez - 7/dez, por\u00e9m at\u00e9 agora n\u00e3o mudou o status. Posso entrar em contato com algum atendente?",
+          "true_intent": "delivery_issue",
+          "pred_intent": "order_tracking",
+          "true_escalate": false,
+          "pred_escalate": false,
+          "reply": "Ol\u00e1! Sinto muito pela demora na atualiza\u00e7\u00e3o do seu pedido. Para que possamos verificar o que houve, por favor, entre em contato com nosso SAC pelo link: https://www.amazon.com.br/faleconosco. Por seguran\u00e7a, n\u00e3o compartilhe dados pessoais aqui. ^[SeuNome]"
+        },
+        {
+          "message": "Shared and I got reply too ,but it's like everyday story .me too will not cancel this time .let u People cancel my order",
+          "true_intent": "refund_return",
+          "pred_intent": "order_tracking",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm truly sorry for the frustration caused by these repeated cancellations. We'd like to look into this for you. Please send us a DM with your order details (without sharing sensitive info publicly) so we can assist you further. ^AM"
+        },
+        {
+          "message": "plz expedite the delivery of my order placed by mob no- 8010757001. Its urgent, you guyz didnt even give me option to pay 1 day delivery charge as well. Its my first order with u. Dont brk my trust. reaching twitter almost brks it.",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm sorry for this experience, especially as it's your first order. We'd like to look into this for you. Please reach out to us here: https://www.amazon.in/contact-us. Please do not share personal details like your mobile number publicly. ^SH"
+        },
+        {
+          "message": "very bad Couriar service. you make fake promise guarantee for delivery. your call centre executive not give right information. your company make fake promise. All are talk rudely. My order No. # 171-0728961-5293153",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry for the frustration caused by your delivery and our support team. This isn't the experience we want for you. Please reach out to us via DM so we can assist you further without sharing your personal order details publicly. ^VM"
+        },
+        {
+          "message": "amazonuk took money without any they are not giving it back nor giving clear statement of my refund proces",
+          "true_intent": "billing_payment",
+          "pred_intent": "billing_payment",
+          "true_escalate": true,
+          "pred_escalate": true,
+          "reply": "I'm sorry for the frustration! Without sharing personal details, could you tell us a bit more about what's going on? Also, have you had a chance to speak with your bank regarding the refund status? ^AM"
+        },
+        {
+          "message": "this is apparently a failed delivery attempt of 3 items, all due last Friday, still waiting despite promises that the items would be delivered Friday evening, Saturday morning, Sunday, Monday, Tuesday, you get the picture !!!!!",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry for the repeated failed delivery attempts and the frustration this has caused. Please reach out to us here: https://www.amazon.com/contact-us so we can investigate this for you. Please do not share personal details publicly. ^AM"
+        },
+        {
+          "message": "just had a delivery of a TELESCOPE thrown over our back gate and you register it as \u201chanded to resident\u201d! This is my daughter\u2019s birthday present your driver is being flippant with! If it\u2019s broken you would have ruined her birthday. Hope your happy \ud83d\udc4f\ud83c\udffb\ud83d\ude21",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm so sorry to hear about how your daughter's telescope was delivered. I understand your frustration and would like to look into this with you. Please reach out to us here: https://www.amazon.com/contact-us. Please do not share personal details publicly. ^SY"
+        },
+        {
+          "message": "this is ridiculous...i specified that this order was a gift too....and a \"replacement\" would cost me more since one of the items was a part of a lightning deal...",
+          "true_intent": "refund_return",
+          "pred_intent": "refund_return",
+          "true_escalate": true,
+          "pred_escalate": true,
+          "reply": "I'm very sorry for the frustration, especially with this being a gift. I understand your concern regarding the price difference. Please reach out to us here: https://www.amazon.com/contact-us. Without sharing personal info publicly, let us know once you've connected. ^AM"
+        },
+        {
+          "message": "Make sure it gets delivered today. It has been in my city since yesterday early morning. I\u2019m sure it can be done unless you would rather chose to make a fool out of your customers",
+          "true_intent": "delivery_issue",
+          "pred_intent": "delivery_issue",
+          "true_escalate": true,
+          "pred_escalate": false,
+          "reply": "I'm very sorry for the frustration regarding your delivery. Our carriers can deliver as late as 10 PM local time. Please send us a DM\u2014without sharing personal details here\u2014so we can look into this for you. ^[Agent Initials]"
+        }
+      ]
+    }
+  ]
+}
