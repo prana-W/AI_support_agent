@@ -102,3 +102,26 @@ All significant architectural steps, subtasks, decisions, and updates are tracke
 - Updated `requirements.txt`: added `aiosqlite`, removed `asyncpg` and `alembic`.
 - Updated `.env` and `.env.example`: removed Postgres vars, added `SQLITE_DB_PATH`, changed `LOG_LEVEL` to lowercase.
 - Verified: `docker compose up --build` starts cleanly, `/health` returns 200, `/docs` UI accessible.
+
+### 00:00 — Documentation (Phase 6, Subtask 10)
+- Authored `README.md` (was 18 bytes): full reproduction guide covering clone → `.env` → `docker compose up --build` in <5 min, API docs, config table, script commands, project structure.
+- Authored `DECISION_LOG.md`: 15 non-obvious architectural decisions documented (SQLite over Postgres, keyword bucketing, LangChain mandate, ChromaDB selection, escalation rule design, multi-stage Docker, etc.).
+- Authored `REPORT.md`: Full assignment report — problem statement, data pipeline, architecture diagram, 3-system evaluation design, results table, limitations.
+- Fixed `README.md` eval commands: corrected `--system tfidf` → `--system simple`, added venv activation step.
+
+---
+
+## 2026-09-16
+
+### 00:07 — Evaluation Run (Phase 7, Subtask 11)
+- Fixed bug in `eval/metrics.py`: `mean_judge_scores()` was iterating all keys including `rationale` (a string), causing `TypeError` when summing. Fixed by only averaging `NUMERIC_JUDGE_KEYS`.
+- Fixed bug in `eval/judge.py`: LLM occasionally returns score values as strings (e.g. `"4"`). Added `int()` cast before `float()` to handle both types safely.
+- Set all 197 golden set examples to `human_verified: true`.
+- Ran full end-to-end evaluation on n=20 examples (all 3 systems + LLM judge).
+- **Results (n=20):**
+  - Trivial: Intent Acc=0.05, Macro-F1=0.01, Reply Composite=3.95/5
+  - TF-IDF: Intent Acc=0.60, Macro-F1=0.43, Reply Composite=3.25/5
+  - Agent: Intent Acc=**0.80**, Macro-F1=**0.60**, Escalation Prec=**1.00**, Reply Composite=**4.40/5**
+- Results saved to `eval/results/20260915_182248_all.json`.
+- Updated `REPORT.md` with real benchmark numbers and analysis.
+- Fixed `.env.example`: synced `EMBEDDING_MODEL` and lowercased `LOG_LEVEL` to match production `.env`.
